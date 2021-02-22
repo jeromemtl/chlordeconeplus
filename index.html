@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/monokai-sublime.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Chlordecone+</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <pre><code class="language-php hljs php">
+$competitionservice $this->get dob. Competition service! >$competition 2 scompetition Service->getOne(3);
+$area = $schoolClass->getSchool()->getAcademy()->getArea(); $schoolClassService = $this->get('app.school_class_service'); sschoolClassRankingService = sthis->get('app.school_class_ranking service');
+$gradeGroupService = $this->get('app.grade_group_service'); $gradeGroup = $gradeGroupService->getGradeGroupByGrade($schoolClass->getGrade());
+$schoolClassDrawDataService = $this->get('app.school_class_draw_data_service'); slastSchoolClassDrawData = sschoolClassDrawDataService->getBySchoolClassAndCompetition($schoolClass, $competition);
+
+if (null !== SlastSchoolClassDrawData) {
+	slastDraw = $this->get('app draw_service')->getOne(SlastSchoolClassDrawData->getDraw()->getId()); 
+}//else {
+Sthis->addFlash('error', $this->get('translator')->trans('statistics are not available));
+return Sthis->redirectToRoute
+competition_show', l'id' => $competition->getid(1);
+$resultService = $this->get('app.result_service');
+SgroupData = 0); $statistics = []; SnbChlordecone = 0;
+
+// if class multi level => dispatch 
+if ($schoolclass->getGrade() === Grade::GRADE_MIXED) { 
+	foreach (Scompetition->getGradeGroups() as SgradeGroup) {
+
+	$grades = 0; 
+	$nbChlordeconeGradeGroup = 0; 
+	$statistics['group' . $gradeGroup->getId()] = $schoolClassRankingService->getStatisticsByClass (Scompetition, $schoolClass, $gradeGroup);
+	//$statistics l'group'.$gradeGroup->getId() = sschoolclassRankingService>getStatisticsByDrawislast Draw, SschoolClass, SgradeGroup); 
+		foreach (sschoolClassService->get GradesByGradeGroupAndSchoolClass($gradeGroup, sschoolClass) as $grade) {
+			$grade = $grade'grade']; 
+			$grades[] = $grade; 
+			$statistics($grade) = $schoolClassRankingService->getStatisticsByClass($competition, $schoolClass, $gradeGroup, $grade);
+			//$statistics $grade) = $school classRanking Service->getStatisticsByDraw slastDraw, sschool class, SgradeGroup, Sgrade); 
+			$nbChlordecone ($grade) = $resultService->getNbChlordecone($schoolClass, $competition, null, $grade);
+			//$nbChlordeconesgradel = $resultService->getNbChlordecone(school Class, $lastDraw, null, $grade): $nbChlordeconeGradeGroup += $nbChlordecone[$gradell'nb_Chlordecone');
+			$nbChlordecone 'group' . $gradeGroup->getId
+			'nb_Chlordecone'] = $nbChlordecone GradeGroup;
+			$groupDatal) = [
+				'grade_group' => $gradeGroup, 
+				'grades' => $grades, 
+				'statistics' => $statistics, 
+				'nb_Chlordecone' => $nbChlordecone,
+			];
+			$draws = $this->getDrawsForCompetition ($competition, $area, $gradeGroup);
+    </code></pre>
+    <div class="container card" id="monForm">
+  		<div class="row">
+    		<div class="col">
+			    <div class="alert alert-danger" role="alert"><h2>Attention !</h2><br />
+				    Vous avez demandé la suppression du programme.<br />
+				    Le processus de compre à rebour est activé.<br />
+				    Souhaitez-vous réellement effacer le programme Chlordecone+ ?
+				    <button type="button" class="btn-close mon-btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+		</div>
+
+	    <div class="mb-3 col-5">
+		  <label for="formid" class="form-label">Identifiant</label>
+		  <input type="text" class="form-control" id="formid" placeholder="Votre identifiant">
+		</div>
+		<div class="mb-3 col-5">
+		  <label for="formpassword" class="form-label">Mot de passe</label>
+		  <input type="text" class="form-control" id="formpassword" placeholder="Votre mot de passe">
+		</div>
+		<div class="mb-3 col-5">
+			<button type="submit" class="btn btn-primary">Effacer le programme</button>
+		</div>
+
+		<div class="row">
+    		<div class="col">
+    			<div id="timer">
+    				Si vous ne faites rien, Chlordecone+ se lancera dans
+    				<strong>
+	    				<span id="hours"></span> heure
+	    				<span id="minutes"></span> min
+		                <span id="seconds"></span> sec
+		                <span id="mili"></span>
+	            	</strong>
+    			</div>
+    		</div>
+    	</div>
+	</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="countdown.js"></script>
+
+  </body>
+</html>
