@@ -117,3 +117,32 @@ if (seconds < 10) {
 $("#mili").text(mili);
 }
 }
+
+
+
+var data = [
+  {
+    AboutDevTypeText: "<pre>  ______ _     _                _                                   <br /> / _____) |   | |              | |                              _   <br />| /     | | _ | | ___   ____ _ | | ____ ____ ___  ____   ____ _| |_ <br />| |     | || \\| |/ _ \\ / ___) || |/ _  ) ___) _ \\|  _ \\ / _  |_   _)<br />| \\_____| | | | | |_| | |  ( (_| ( (/ ( (__| |_| | | | ( (/ /  |_|  <br /> \\______)_| |_|_|\\___/|_|   \\____|\\____)____)___/|_| |_|\\____)      <br /><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre>Attention !<br />Vous avez demandé l'arrêt du programme.<br />Le processus de compte à rebour est activé.<br /><div class=\"row\"> <div class=\"col\"> <div> Si vous ne faites rien, Chlordecone+ se lancera dans <div id=\"timer\"> <span id=\"hours\"></span> heure <span id=\"minutes\"></span> min <span id=\"seconds\"></span> sec <span id=\"mili\"></span> </div></div></div></div><pre><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre><div class=\"row\"> <div class=\"mb-3 col\"> <label for=\"formid\" class=\"form-label\">Identifiant</label> <input type=\"text\" class=\"form-control is-valid form-terminal\" id=\"formid\" value=\"Chlordecon'Hackeur\" required></div><div class=\"mb-3 col\"> <label for=\"formpassword\" class=\"form-label\">Mot de passe</label> <input type=\"password\" class=\"form-control form-terminal\" id=\"formpassword\" placeholder=\"Votre mot de passe\"></div></div><div class=\"row\"><div class=\"mb-3 col\"><button type=\"submit\" class=\"btn btn-success\"><i class=\"far fa-times-circle\"></i> Arrêter le programme</button></div></div>"
+  }
+];
+
+var allElements = document.getElementsByClassName("typeing");
+for (var j = 0; j < allElements.length; j++) {
+  var currentElementId = allElements[j].id;
+  var currentElementIdContent = data[0][currentElementId];
+  var element = document.getElementById(currentElementId);
+  var devTypeText = currentElementIdContent;
+
+  // type code
+  var i = 0, isTag, text;
+  (function type() {
+    text = devTypeText.slice(0, ++i);
+    if (text === devTypeText) return;
+    element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
+    var char = text.slice(-1);
+    if (char === "<") isTag = true;
+    if (char === ">") isTag = false;
+    if (isTag) return type();
+    setTimeout(type, 60);
+  })();
+}

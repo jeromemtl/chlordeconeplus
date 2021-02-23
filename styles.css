@@ -7,11 +7,56 @@ body{
 	top: 50%;
 	left: 50%; 
 	transform: translate(-50%, -50%);
-	padding: 1em;
+	padding: 3em;
+	max-width: 40em;
+}
+
+#timer{
+	font-weight: bold;
+	/*font-size: 1.3em;*/
 }
 
 .mon-btn-close{
 	position:absolute; 
-	top:5%; 
-	left:97%;
+	top:2%; 
+	right:4%;
+}
+
+.marg1{
+	margin:1em;
+}
+
+.height100{
+	height: 100%;
+}
+
+.eighties{
+	background-color: #000;
+	color: #0F0;
+	font-family: Consolas;
+}
+
+.form-terminal{
+	background-color: #000!important;
+    border: 1px solid #0F0;
+    color: #0F0!important
+}
+
+.green{
+
+}
+
+.blinker {
+  opacity: 1;
+  margin-bottom: -2px;
+  height: 15px;
+  margin-left: -5px;
+  border-left: 7px solid #0F0;
+  animation: blinker 0.9s steps(2, start) infinite;
+}
+
+@keyframes blinker {
+  to { 
+    visibility: hidden; 
+  }
 }
