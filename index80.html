@@ -23,30 +23,32 @@ $schoolClassRankingService = sthis->get('app.school_class_ranking service');
 $gradeGroupService = $this->get('app.grade_group_service'); 
 $gradeGroup = $gradeGroupService->getGradeGroupByGrade($schoolClass->getGrade());
 $schoolClassDrawDataService = $this->get('app.school_class_draw_data_service'); 
-slastSchoolClassDrawData = sschoolClassDrawDataService->getBySchoolClassAndCompetition($schoolClass, $competition);
+$lastSchoolClassDrawData = $schoolClassDrawDataService->getBySchoolClassAndCompetition($schoolClass, $competition);
 
 if (null !== SlastSchoolClassDrawData) {
-	slastDraw = $this->get('app draw_service')->getOne(SlastSchoolClassDrawData->getDraw()->getId()); 
+	$lastDraw = $this->get('app draw_service')->getOne($lastSchoolClassDrawData->getDraw()->getId()); 
 }//else {
-Sthis->addFlash('error', $this->get('translator')->trans('statistics are not available));
-return Sthis->redirectToRoute
-competition_show', l'id' => $competition->getid(1);
+//$this->addFlash('error', $this->get('translator')->trans('statistics are not available'));
+//return Sthis->redirectToRoute
+//competition_show', l'id' => $competition->getid(1);
 $resultService = $this->get('app.result_service');
-SgroupData = 0); $statistics = []; SnbChlordecone = 0;
+$groupData = []; 
+$statistics = []; 
+$nbChlordecone = [];
 
 // if class multi level => dispatch 
 if ($schoolclass->getGrade() === Grade::GRADE_MIXED) { 
-	foreach (Scompetition->getGradeGroups() as SgradeGroup) {
+	foreach ($competition->getGradeGroups() as $gradeGroup) {
 
 	$grades = 0; 
 	$nbChlordeconeGradeGroup = 0; 
-	$statistics['group' . $gradeGroup->getId()] = $schoolClassRankingService->getStatisticsByClass (Scompetition, $schoolClass, $gradeGroup);
-	//$statistics l'group'.$gradeGroup->getId() = sschoolclassRankingService>getStatisticsByDrawislast Draw, SschoolClass, SgradeGroup); 
-		foreach (sschoolClassService->get GradesByGradeGroupAndSchoolClass($gradeGroup, sschoolClass) as $grade) {
+	$statistics['group' . $gradeGroup->getId()] = $schoolClassRankingService->getStatisticsByClass ($competition, $schoolClass, $gradeGroup);
+	//$statistics l'group'.$gradeGroup->getId() = $schoolclassRankingService>getStatisticsByDrawislast Draw, $schoolClass, $gradeGroup); 
+		foreach ($schoolClassService->get GradesByGradeGroupAndSchoolClass($gradeGroup, $schoolClass) as $grade) {
 			$grade = $grade'grade']; 
 			$grades[] = $grade; 
 			$statistics($grade) = $schoolClassRankingService->getStatisticsByClass($competition, $schoolClass, $gradeGroup, $grade);
-			//$statistics $grade) = $school classRanking Service->getStatisticsByDraw slastDraw, sschool class, SgradeGroup, Sgrade); 
+			//$statistics $grade) = $school classRanking Service->getStatisticsByDraw($lastDraw, $school $class, $gradeGroup, $grade); 
 			$nbChlordecone ($grade) = $resultService->getNbChlordecone($schoolClass, $competition, null, $grade);
 			//$nbChlordeconesgradel = $resultService->getNbChlordecone(school Class, $lastDraw, null, $grade): 
 			//$nbChlordeconeGradeGroup += $nbChlordecone[$gradell'nb_Chlordecone');
@@ -57,7 +59,7 @@ if ($schoolclass->getGrade() === Grade::GRADE_MIXED) {
 				'statistics' => $statistics, 
 				'nb_Chlordecone' => $nbChlordecone,
 			];
-			$draws = $this->getDrawsForCompetition ($competition, $area, $gradeGroup);
+			$draws = $this->getDrawsForCompetition($competition, $area, $gradeGroup);
     </code></pre>
     <div class="container card eighties" id="monForm">
   		
