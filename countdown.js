@@ -1,3 +1,5 @@
+var tentative=3;
+
 var cle, phrase;
 coordphrase=new Array();
 coordphrase_cle=new Array();
@@ -40,8 +42,9 @@ function cryptage(prmIN)
         console.log("crypt="+crypt);
         return crypt;
     }
-    else
-        alert("il manque au moins un élément !");
+    else{        
+      //alert("input error : identifiant ou mot de passe vide");
+    }
 }
 
 function clicForm() {
@@ -89,7 +92,7 @@ function clicForm() {
 
             // Timer done
             clearInterval(timer);
-            window.location.href = "/escapeGameMathador/Defaite"; //"20ans_pagepasOK.html";
+            window.location.href = "defaite.html";
 
         } else {
 
@@ -119,30 +122,59 @@ $("#mili").text(mili);
 }
 
 
-
+//défilement du texte
 var data = [
   {
-    AboutDevTypeText: "<pre>  ______ _     _                _                                   <br /> / _____) |   | |              | |                              _   <br />| /     | | _ | | ___   ____ _ | | ____ ____ ___  ____   ____ _| |_ <br />| |     | || \\| |/ _ \\ / ___) || |/ _  ) ___) _ \\|  _ \\ / _  |_   _)<br />| \\_____| | | | | |_| | |  ( (_| ( (/ ( (__| |_| | | | ( (/ /  |_|  <br /> \\______)_| |_|_|\\___/|_|   \\____|\\____)____)___/|_| |_|\\____)      <br /><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre>Attention !<br />Vous avez demandé l'arrêt du programme.<br />Le processus de compte à rebour est activé.<br /><div class=\"row\"> <div class=\"col\"> <div> Si vous ne faites rien, Chlordecone+ se lancera dans <div id=\"timer\"> <span id=\"hours\"></span> heure <span id=\"minutes\"></span> min <span id=\"seconds\"></span> sec <span id=\"mili\"></span> </div></div></div></div><pre><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre><div class=\"row\"> <div class=\"mb-3 col\"> <label for=\"formid\" class=\"form-label\">Identifiant</label> <input type=\"text\" class=\"form-control is-valid form-terminal\" id=\"formid\" value=\"Chlordecon'Hackeur\" required></div><div class=\"mb-3 col\"> <label for=\"formpassword\" class=\"form-label\">Mot de passe</label> <input type=\"password\" class=\"form-control form-terminal\" id=\"formpassword\" placeholder=\"Votre mot de passe\"></div></div><div class=\"row\"><div class=\"mb-3 col\"><button type=\"submit\" class=\"btn btn-success\"><i class=\"far fa-times-circle\"></i> Arrêter le programme</button></div></div>"
+    AboutDevTypeText: "<pre>  ______ _     _                _                                   <br /> / _____) |   | |              | |                              _   <br />| /     | | _ | | ___   ____ _ | | ____ ____ ___  ____   ____ _| |_ <br />| |     | || \\| |/ _ \\ / ___) || |/ _  ) ___) _ \\|  _ \\ / _  |_   _)<br />| \\_____| | | | | |_| | |  ( (_| ( (/ ( (__| |_| | | | ( (/ /  |_|  <br /> \\______)_| |_|_|\\___/|_|   \\____|\\____)____)___/|_| |_|\\____)      <br /><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre>Attention !<br />Vous avez demandé l'arrêt du programme.<br />Le processus de compte à rebour est activé.<br /><div class=\"row\"> <div class=\"col\"> <div> Si vous ne faites rien, Chlordecone+ se lancera dans <div id=\"timer\"> <span id=\"hours\"></span> heure <span id=\"minutes\"></span> min <span id=\"seconds\"></span> sec <span id=\"mili\"></span> </div></div></div></div><pre><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre><div class=\"row\"> <div class=\"mb-3 col\"> <label for=\"formid\" class=\"form-label\">Identifiant</label> <input type=\"text\" class=\"form-control is-valid form-terminal green\" id=\"formid\" value=\"Chlordecon'Hackeur\" required></div><div class=\"mb-3 col\"> <label for=\"formpassword\" class=\"form-label\">Mot de passe</label> <input type=\"password\" class=\"form-control form-terminal\" id=\"formpassword\" placeholder=\"Votre mot de passe\"></div></div><div class=\"row\"><div class=\"mb-3 col\"><button type=\"submit\" class=\"btn btn-custom\" id=\"Submit\"><i class=\"far fa-times-circle\"></i> Arrêter le programme</button></div></div>"
   }
 ];
+function typing(data){
+  var allElements = document.getElementsByClassName("typeing");
+  for (var j = 0; j < allElements.length; j++) {
+    var currentElementId = allElements[j].id;
+    var currentElementIdContent = data[0][currentElementId];
+    var element = document.getElementById(currentElementId);
+    var devTypeText = currentElementIdContent;
 
-var allElements = document.getElementsByClassName("typeing");
-for (var j = 0; j < allElements.length; j++) {
-  var currentElementId = allElements[j].id;
-  var currentElementIdContent = data[0][currentElementId];
-  var element = document.getElementById(currentElementId);
-  var devTypeText = currentElementIdContent;
-
-  // type code
-  var i = 0, isTag, text;
-  (function type() {
-    text = devTypeText.slice(0, ++i);
-    if (text === devTypeText) return;
-    element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
-    var char = text.slice(-1);
-    if (char === "<") isTag = true;
-    if (char === ">") isTag = false;
-    if (isTag) return type();
-    setTimeout(type, 60);
-  })();
+    // type code
+    var i = 0, isTag, text;
+    (function type() {
+      text = devTypeText.slice(0, ++i);
+      if (text === devTypeText) return;
+      element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
+      var char = text.slice(-1);
+      if (char === "<") isTag = true;
+      if (char === ">") isTag = false;
+      if (isTag) return type();
+      setTimeout(type, 30);
+    })();
+  }
 }
+typing(data);
+
+$(document).ready(function() {
+  setTimeout(function(){
+    $("#Submit").click(function() {     
+      if(cryptage($("#formpassword").val())=="bvrqmu"){
+        window.location.href = "victiore.html";
+      }else{
+        if (tentative>0) {
+          tentative--;
+          
+          if (tentative==0) {
+            $("#fomError").html($("#fomError").html()+"<div>Erreur ! Dernière tentative !</div>");
+          }else{
+            $("#fomError").html($("#fomError").html()+"<div>Erreur ! Tentatives restantes : "+tentative+"</div>");
+          }
+        }
+        else{
+          window.location.href = "defaite.html";
+        }
+
+      }
+
+    });
+  }, 28000);
+  
+  
+});

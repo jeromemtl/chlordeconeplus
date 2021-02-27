@@ -23,32 +23,30 @@ $schoolClassRankingService = sthis->get('app.school_class_ranking service');
 $gradeGroupService = $this->get('app.grade_group_service'); 
 $gradeGroup = $gradeGroupService->getGradeGroupByGrade($schoolClass->getGrade());
 $schoolClassDrawDataService = $this->get('app.school_class_draw_data_service'); 
-$lastSchoolClassDrawData = $schoolClassDrawDataService->getBySchoolClassAndCompetition($schoolClass, $competition);
+slastSchoolClassDrawData = sschoolClassDrawDataService->getBySchoolClassAndCompetition($schoolClass, $competition);
 
 if (null !== SlastSchoolClassDrawData) {
-	$lastDraw = $this->get('app draw_service')->getOne($lastSchoolClassDrawData->getDraw()->getId()); 
+	slastDraw = $this->get('app draw_service')->getOne(SlastSchoolClassDrawData->getDraw()->getId()); 
 }//else {
-//$this->addFlash('error', $this->get('translator')->trans('statistics are not available'));
-//return Sthis->redirectToRoute
-//competition_show', l'id' => $competition->getid(1);
+Sthis->addFlash('error', $this->get('translator')->trans('statistics are not available));
+return Sthis->redirectToRoute
+competition_show', l'id' => $competition->getid(1);
 $resultService = $this->get('app.result_service');
-$groupData = []; 
-$statistics = []; 
-$nbChlordecone = [];
+SgroupData = 0); $statistics = []; SnbChlordecone = 0;
 
 // if class multi level => dispatch 
 if ($schoolclass->getGrade() === Grade::GRADE_MIXED) { 
-	foreach ($competition->getGradeGroups() as $gradeGroup) {
+	foreach (Scompetition->getGradeGroups() as SgradeGroup) {
 
 	$grades = 0; 
 	$nbChlordeconeGradeGroup = 0; 
-	$statistics['group' . $gradeGroup->getId()] = $schoolClassRankingService->getStatisticsByClass ($competition, $schoolClass, $gradeGroup);
-	//$statistics l'group'.$gradeGroup->getId() = $schoolclassRankingService>getStatisticsByDrawislast Draw, $schoolClass, $gradeGroup); 
-		foreach ($schoolClassService->get GradesByGradeGroupAndSchoolClass($gradeGroup, $schoolClass) as $grade) {
+	$statistics['group' . $gradeGroup->getId()] = $schoolClassRankingService->getStatisticsByClass (Scompetition, $schoolClass, $gradeGroup);
+	//$statistics l'group'.$gradeGroup->getId() = sschoolclassRankingService>getStatisticsByDrawislast Draw, SschoolClass, SgradeGroup); 
+		foreach (sschoolClassService->get GradesByGradeGroupAndSchoolClass($gradeGroup, sschoolClass) as $grade) {
 			$grade = $grade'grade']; 
 			$grades[] = $grade; 
 			$statistics($grade) = $schoolClassRankingService->getStatisticsByClass($competition, $schoolClass, $gradeGroup, $grade);
-			//$statistics $grade) = $school classRanking Service->getStatisticsByDraw($lastDraw, $school $class, $gradeGroup, $grade); 
+			//$statistics $grade) = $school classRanking Service->getStatisticsByDraw slastDraw, sschool class, SgradeGroup, Sgrade); 
 			$nbChlordecone ($grade) = $resultService->getNbChlordecone($schoolClass, $competition, null, $grade);
 			//$nbChlordeconesgradel = $resultService->getNbChlordecone(school Class, $lastDraw, null, $grade): 
 			//$nbChlordeconeGradeGroup += $nbChlordecone[$gradell'nb_Chlordecone');
@@ -59,12 +57,47 @@ if ($schoolclass->getGrade() === Grade::GRADE_MIXED) {
 				'statistics' => $statistics, 
 				'nb_Chlordecone' => $nbChlordecone,
 			];
-			$draws = $this->getDrawsForCompetition($competition, $area, $gradeGroup);
+			$draws = $this->getDrawsForCompetition ($competition, $area, $gradeGroup);
     </code></pre>
-    <div class="container card eighties" id="monForm">
-  		
-		<div class="row">	
-	    	<span id="AboutDevTypeText" class="typeing"></span>
+    <div class="container card" id="monForm">
+  		<div class="row">
+  			<div class="col-6">
+			    <div class="mb-3 col">
+				  <label for="formid" class="form-label">Identifiant</label>
+				  <input type="text" class="form-control" id="formid" value="Chlordecon'Hackeur">
+				</div>
+				<div class="mb-3 col">
+				  <label for="formpassword" class="form-label">Mot de passe</label>
+				  <input type="password" class="form-control" id="formpassword" placeholder="Votre mot de passe">
+				</div>
+				<div class="mb-3 col">
+					<button type="submit" class="btn btn-danger"><i class="far fa-times-circle"></i> Arrêter le programme</button>
+				</div>
+
+				<div class="row">
+		    		<div class="col">
+		    			<div>
+		    				Si vous ne faites rien, Chlordecone+ se lancera dans
+		    				<div id="timer">
+			    				<span id="hours"></span> heure
+			    				<span id="minutes"></span> min
+				                <span id="seconds"></span> sec
+				                <span id="mili"></span>
+			            	</div>
+		    			</div>
+		    		</div>
+		    	</div>
+	    	</div>
+
+	    	<div class="col-6">
+			    <div class="alert alert-danger height100" role="alert"><h2>Attention !</h2><br />
+				    Vous avez demandé l'arrêt du programme.<br />
+				    Le processus de compte à rebour est activé.<br /><br />
+				    Souhaitez-vous réellement arrêter le programme Chlordecone+ ?
+				    <button type="button" class="btn-close mon-btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			</div>
+
 		</div><!-- fin de row -->
 
 	</div><!-- fin du container -->
