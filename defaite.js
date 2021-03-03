@@ -1,7 +1,7 @@
 //défilement du texte
 var data = [
   {
-    AboutDevTypeText: "<pre>  ______ _     _                _                                   <br /> / _____) |   | |              | |                              _   <br />| /     | | _ | | ___   ____ _ | | ____ ____ ___  ____   ____ _| |_ <br />| |     | || \\| |/ _ \\ / ___) || |/ _  ) ___) _ \\|  _ \\ / _  |_   _)<br />| \\_____| | | | | |_| | |  ( (_| ( (/ ( (__| |_| | | | ( (/ /  |_|  <br /> \\______)_| |_|_|\\___/|_|   \\____|\\____)____)___/|_| |_|\\____)      <br /><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre><span>Exécution du programme Chlordecone+<br />Suppression mondiale et définitve des fichiers sensibles</span><br/>"
+    AboutDevTypeText: "<pre>  ______ _     _                _                                   <br /> / _____) |   | |              | |                              _   <br />| /     | | _ | | ___   ____ _ | | ____ ____ ___  ____   ____ _| |_ <br />| |     | || \\| |/ _ \\ / ___) || |/ _  ) ___) _ \\|  _ \\ / _  |_   _)<br />| \\_____| | | | | |_| | |  ( (_| ( (/ ( (__| |_| | | | ( (/ /  |_|  <br /> \\______)_| |_|_|\\___/|_|   \\____|\\____)____)___/|_| |_|\\____)      <br /><br />\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._,-'\"`-._</pre><span>Exécution du programme Chlordecone+<br />Suppression mondiale et définitive des fichiers sensibles</span><br/>"
   }
 ];
 function typing(data){
