@@ -70,7 +70,7 @@ function clicForm() {
 
       var duration = localStorage.getItem('duration');
       if (duration == null) {
-        duration = 105;
+        duration = 140;
       } else {
         duration = parseInt(duration);
     }
